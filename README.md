@@ -11,56 +11,42 @@ Personal computer with Keil software
 **PROGRAM:**
 
 **(i)	Serial port transfer a character A**
-
+```
 #include<reg51.h> void main(void)
-
 {
-
 TMOD=0X20;//TIMER 1,MODE 2 TH1=0XFA;
-
 SCON=0X50; TR1=1;
-
 while(1)
-
-{ SBUF='A';
-
+{ SBUF='G';
 while(TI==0); TI=0;
-
 }
-
 }
+```
+
+**(ii)	Serial port to Transfer a Message**
+```
+#include<reg51.h> void main(void)
+{
+unsigned char msg[]="Programming 8051"; unsigned char i;
+TMOD=0X20;//TIMER 1,MODE 2 TH1=0XFA;
+SCON=0X50; TR1=1;
+for (i=0; i<17;i++)
+{
+SBUF= msg[i]; while(TI==0); TI=0;
+}
+while(1);
+}
+```
+ 
+**OUTPUT:**
+
+**(i)	Serial port transfer a character G**
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7590bfec-ff0d-4a01-a2cb-b3f96cbbffd6" />
 
 **(ii)	Serial port to Transfer a Message**
 
-#include<reg51.h> void main(void)
-
-{
-
-unsigned char msg[]="Programming 8051"; unsigned char i;
-
-TMOD=0X20;//TIMER 1,MODE 2 TH1=0XFA;
-
-SCON=0X50; TR1=1;
-
-for (i=0; i<17;i++)
-
-{
-
-SBUF= msg[i]; while(TI==0); TI=0;
-
-}
-
-while(1);
-
-}
-
- 
-**OUTPUT:**
-<br>
-<br>
-<br>
-<br>
-<br>
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae42bd86-5996-44b6-9763-9801d660f67a" />
 
 **Result:**
 
